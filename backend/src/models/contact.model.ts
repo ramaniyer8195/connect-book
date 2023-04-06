@@ -10,13 +10,11 @@ const contactModel = new Schema(
     addressLine2: { type: String },
     pincode: { type: Number },
     primaryNumber: {
-      countryCode: { type: Number, required: true },
-      phone: { type: Number, required: true },
+      phone: { type: String, required: true },
     },
     secondaryNumbers: [
       {
-        countryCode: { type: Number },
-        phone: { type: Number },
+        phone: { type: String },
       },
     ],
     emails: [
