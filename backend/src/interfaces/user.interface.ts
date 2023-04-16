@@ -1,12 +1,15 @@
+// route: /user/:userId GET
 export interface GetUserParams {
   userId: string;
 }
 
+// route: /login
 export interface LoginUserBody {
   username?: string;
   password?: string;
 }
 
+// route: /signup
 export interface SignupUserBody {
   name?: string;
   phone?: string;
@@ -15,6 +18,7 @@ export interface SignupUserBody {
   password?: string;
 }
 
-export interface RemoveUserParams {
+// route: /user/:userId DELETE
+export interface DeleteUserParams {
   userId: string;
 }

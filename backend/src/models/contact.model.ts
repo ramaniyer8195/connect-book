@@ -9,14 +9,8 @@ const contactModel = new Schema(
     addressLine1: { type: String },
     addressLine2: { type: String },
     pincode: { type: Number },
-    primaryNumber: {
-      phone: { type: String, required: true },
-    },
-    secondaryNumbers: [
-      {
-        phone: { type: String },
-      },
-    ],
+    primaryNumber: { type: String, required: true },
+    secondaryNumbers: [{ type: String }],
     emails: [
       {
         emailId: { type: String },
@@ -37,7 +31,6 @@ const contactModel = new Schema(
           required: true,
         },
         date: { type: Date, required: true },
-        isReminded: { type: Boolean },
       },
     ],
     customEvents: [
@@ -48,9 +41,10 @@ const contactModel = new Schema(
           required: true,
         },
         date: { type: Date, required: true },
-        isReminded: { type: Boolean },
       },
     ],
+    favorite: { type: Boolean, default: false },
+    family: { type: Schema.Types.ObjectId, ref: "Family" },
   },
   { timestamps: true }
 );

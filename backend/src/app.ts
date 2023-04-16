@@ -12,6 +12,7 @@ import userRoutes from "./routes/user.routes";
 import contactRoutes from "./routes/contact.routes";
 import standardEventRoutes from "./routes/standardEvent.routes";
 import customEventRoutes from "./routes/customEvent.routes";
+import familyRoutes from "./routes/family.routes";
 
 // initialize express
 const app = express();
@@ -39,6 +40,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/contacts", contactRoutes);
 app.use("/api/standardEvents", standardEventRoutes);
 app.use("/api/customEvents", customEventRoutes);
+app.use("/api/family", familyRoutes);
 
 // 404 handling
 app.use((req, res, next) => {
