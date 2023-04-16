@@ -3,7 +3,7 @@ import userModel from "../models/user.model";
 import {
   GetUserParams,
   LoginUserBody,
-  RemoveUserParams,
+  DeleteUserParams,
   SignupUserBody,
 } from "../interfaces/user.interface";
 import mongoose from "mongoose";
@@ -151,8 +151,8 @@ export const logout: RequestHandler = async (req, res, next) => {
   });
 };
 
-export const removeUser: RequestHandler<
-  RemoveUserParams,
+export const deleteUser: RequestHandler<
+  DeleteUserParams,
   unknown,
   unknown,
   unknown
