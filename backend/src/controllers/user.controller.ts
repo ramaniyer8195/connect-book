@@ -117,7 +117,7 @@ export const login: RequestHandler<
 
   try {
     if (!username || !passwordRaw) {
-      throw (HTTP_CODES.BAD_REQUEST, "Parameters missing");
+      throw createHttpError(HTTP_CODES.BAD_REQUEST, "Parameters missing");
     }
 
     const user = await userModel
