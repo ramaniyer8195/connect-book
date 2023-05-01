@@ -1,46 +1,65 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AuthApi from "setup/auth/authApi";
+import { AuthContext } from "../auth/auth";
+import Login from "../../pages/login";
+import Signup from "../../pages/signup";
+import Dashboard from "../../pages/dashboard";
 
 function AppRoutes() {
-  const authApi = useContext(AuthApi);
+  const authContext = useContext(AuthContext);
+
   return (
     <Routes>
-      {/* this will redirect to login component */}
       <Route
         path="/login"
-        element={authApi?.auth ? <Navigate to="/dashboard" /> : <></>}
+        element={
+          authContext.isAuthenticated ? <Navigate to="/dashboard" /> : <Login />
+        }
       />
-      {/* this will redirect to singup component */}
       <Route
         path="/signup"
-        element={authApi?.auth ? <Navigate to="/dashboard" /> : <></>}
+        element={
+          authContext.isAuthenticated ? (
+            <Navigate to="/dashboard" />
+          ) : (
+            <Signup />
+          )
+        }
       />
-      {/* this will redirect to dashboard component */}
       <Route
         path="/dashboard"
-        element={authApi?.auth ? <></> : <Navigate to="/login" />}
+        element={
+          authContext.isAuthenticated ? <Dashboard /> : <Navigate to="/login" />
+        }
       />
       {/* this will redirect to contact component */}
       <Route
         path="/contacts"
-        element={authApi?.auth ? <></> : <Navigate to="/login" />}
+        element={authContext.isAuthenticated ? <></> : <Navigate to="/login" />}
       >
         {/* this will redirect to contact details component */}
         <Route
           path=":id"
-          element={authApi?.auth ? <></> : <Navigate to="/login" />}
+          element={
+            authContext.isAuthenticated ? <></> : <Navigate to="/login" />
+          }
         />
       </Route>
       {/* this will redirect to stats component */}
       <Route
         path="/stats"
-        element={authApi?.auth ? <></> : <Navigate to="/login" />}
+        element={authContext.isAuthenticated ? <></> : <Navigate to="/login" />}
       />
       {/* this will redirect to events component */}
       <Route
         path="/events"
-        element={authApi?.auth ? <></> : <Navigate to="/login" />}
+        element={authContext.isAuthenticated ? <></> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/"
+        element={
+          authContext.isAuthenticated ? <Dashboard /> : <Navigate to="/login" />
+        }
       />
     </Routes>
   );
